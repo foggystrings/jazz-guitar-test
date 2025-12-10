@@ -9,13 +9,18 @@
   <meta name="description" content="A minimal, anonymous 10-step plan for learning to listen deeply to Wes Montgomery." />
   <style>
     :root {
-      --bg: #050816;
+      --bg: #030712;
+      --bg-alt: #020617;
+      --panel: #020617;
       --card: #0b1220;
+      --card-alt: #020617;
       --text: #e5e7eb;
       --muted: #9ca3af;
-      --accent: #f97316;
-      --accent-soft: rgba(249,115,22,0.12);
+      --accent: #fb923c;
+      --accent-soft: rgba(251, 146, 60, 0.15);
       --border: #1f2937;
+      --radius-lg: 18px;
+      --radius-md: 12px;
     }
 
     * {
@@ -25,7 +30,9 @@
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020617 55%, #020617 100%);
+      background:
+        radial-gradient(circle at top, #111827 0, #020617 55%, #020617 100%),
+        linear-gradient(to bottom, #030712, #020617);
       color: var(--text);
       -webkit-font-smoothing: antialiased;
     }
@@ -33,146 +40,402 @@
     .page {
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 24px 16px;
+      padding: 24px 16px 32px;
     }
 
-    .card {
+    .shell {
       width: 100%;
-      max-width: 720px;
-      background: var(--card);
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      padding: 24px 20px 18px;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.6);
+      max-width: 960px;
     }
 
-    .tag {
+    /* Top bar */
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .logo-wrap {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 3px 9px;
+      gap: 10px;
+    }
+
+    .logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: conic-gradient(from 210deg, #fb923c, #f97316, #facc15, #fb923c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: #0b1120;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.55);
+    }
+
+    .logo-text-main {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .logo-text-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .top-tag {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* Main panel */
+
+    .panel {
+      background: linear-gradient(135deg, #020617, #020617 40%, #030712 100%);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7);
+      padding: 22px 20px 20px;
+    }
+
+    .header-row {
+      display: grid;
+      grid-template-columns: minmax(0, 2.4fr) minmax(0, 2.3fr);
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
       border-radius: 999px;
       background: var(--accent-soft);
       color: var(--accent);
       font-size: 11px;
-      letter-spacing: 0.14em;
       text-transform: uppercase;
+      letter-spacing: 0.18em;
     }
 
-    .tag-dot {
-      width: 6px;
-      height: 6px;
+    .tagline-dot {
+      width: 7px;
+      height: 7px;
       border-radius: 999px;
       background: var(--accent);
     }
 
     h1 {
-      margin: 14px 0 4px;
-      font-size: 24px;
+      margin: 12px 0 4px;
+      font-size: 26px;
       line-height: 1.2;
     }
 
     .subtitle {
-      margin: 0 0 16px;
+      margin: 0;
       font-size: 14px;
       color: var(--muted);
     }
 
-    ol {
-      margin: 0;
-      padding-left: 20px;
+    .album-card {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top left, rgba(251, 146, 60, 0.12), #020617 60%);
+      padding: 12px 12px 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .album-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .album-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+      margin-bottom: 3px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .pill.highlight {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Steps layout */
+
+    .steps {
+      margin-top: 6px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 12px;
+      padding: 10px 11px 9px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(to right, var(--card), var(--card-alt));
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(251, 146, 60, 0.15), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .step-number {
+      z-index: 1;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      background: radial-gradient(circle at top, #fb923c, #f97316);
+      color: #0b1120;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+      flex-shrink: 0;
+    }
+
+    .step-body {
+      z-index: 1;
       font-size: 14px;
       line-height: 1.6;
     }
 
-    li + li {
-      margin-top: 8px;
+    .step-body strong {
+      font-weight: 600;
+      color: #fed7aa;
     }
 
-    strong {
-      font-weight: 600;
+    .step-body em {
+      font-style: italic;
+      color: #e5e7eb;
     }
 
     .note {
       margin-top: 14px;
       font-size: 12px;
       color: var(--muted);
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      padding-top: 10px;
+    }
+
+    /* Footer */
+
+    .footer {
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      opacity: 0.85;
     }
 
     @media (max-width: 720px) {
-      .card {
-        padding: 18px 16px 14px;
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .panel {
+        padding: 18px 16px 16px;
+      }
+      .header-row {
+        grid-template-columns: minmax(0, 1fr);
       }
       h1 {
-        font-size: 21px;
+        font-size: 22px;
       }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <div class="card">
-      <div class="tag">
-        <span class="tag-dot"></span>
-        <span>Jazz Guitar · Listening</span>
-      </div>
+    <div class="shell">
+      <header class="topbar">
+        <div class="logo-wrap">
+          <div class="logo">W</div>
+          <div>
+            <div class="logo-text-main">Listening Practice</div>
+            <div class="logo-text-sub">One guitarist, one record, many returns.</div>
+          </div>
+        </div>
+        <div class="top-tag">
+          Quiet study · Wes Montgomery
+        </div>
+      </header>
 
-      <h1>Listening to Wes Montgomery – A 10-Step Plan</h1>
-      <p class="subtitle">
-        Not about playing fast. Just learning how to really hear what Wes is doing, one small step at a time.
-      </p>
+      <main class="panel">
+        <div class="header-row">
+          <div>
+            <div class="tagline">
+              <span class="tagline-dot"></span>
+              <span>10-Step Listening Plan</span>
+            </div>
+            <h1>Learning to Listen to Wes Montgomery</h1>
+            <p class="subtitle">
+              Not about speed or theory. Just training your ear to notice tone, time, and phrasing —
+              one album, many listens.
+            </p>
+          </div>
 
-      <ol>
-        <li>
-          <strong>Pick one album.</strong> Choose a single record (for example <em>Smokin’ at the Half Note</em>).
-          For the next weeks, listen mostly to this one album so your ear has something familiar to grow in.
-        </li>
-        <li>
-          <strong>First listen: just enjoy.</strong> Play the album once without analysis. No guitar, no notes,
-          no pausing. Let it be background to making tea or sitting on the sofa.
-        </li>
-        <li>
-          <strong>Notice his sound.</strong> On the next listen, focus only on tone: the warm thumb attack,
-          how round or sharp the notes are, how loud he is compared to the band.
-        </li>
-        <li>
-          <strong>Follow the melody.</strong> Choose one tune. Hum or whistle along with the main melody,
-          even badly. The goal is simply to be able to recognise that tune when it comes back.
-        </li>
-        <li>
-          <strong>Trace the time feel.</strong> Listen to how Wes places his notes against the drums and bass.
-          Tap your foot softly. Notice when he sits right on the beat, slightly behind, or pushes ahead.
-        </li>
-        <li>
-          <strong>Listen for phrases, not licks.</strong> Pick one solo and hear where the musical sentences
-          start and stop. Count how many bars a phrase lasts. You don’t need theory words—just “short”, “medium”,
-          “long” phrases is enough.
-        </li>
-        <li>
-          <strong>Sing one short line.</strong> Find a tiny fragment of a solo you like and sing it with the
-          recording: “da-da-da…” Matching pitch is optional; matching the <em>shape</em> and rhythm is the point.
-        </li>
-        <li>
-          <strong>Compare two versions.</strong> If a tune appears on more than one album, listen to both.
-          Notice what stays the same (melody, basic feel) and what changes (tempo, introductions, solos).
-        </li>
-        <li>
-          <strong>Keep a tiny listening log.</strong> After each focused listen, write one or two lines:
-          “Track 3 – loved the octave solo,” or “He left so much space on the ballad.” This keeps your ear awake.
-        </li>
-        <li>
-          <strong>Return over weeks, not days.</strong> Come back to the same album many times over a month
-          or two. The goal isn’t to “finish” Wes—it’s to let his sound become a quiet reference point in your
-          own musical listening.
-        </li>
-      </ol>
+          <aside class="album-card">
+            <div class="album-title">Start with one record</div>
+            <p>
+              Choose a single album (for example <em>Smokin’ at the Half Note</em>) and stay with it
+              for a while. Let it become somewhere your ears “live”, not just visit.
+            </p>
+            <div class="album-pills">
+              <span class="pill highlight">One album</span>
+              <span class="pill">Repeat listens</span>
+              <span class="pill">No hurry</span>
+            </div>
+          </aside>
+        </div>
 
-      <p class="note">
-        No transcriptions are required. If you end up reaching for your guitar, that’s fine—but simply listening
-        like this is already serious practice.
-      </p>
+        <section class="steps" aria-label="10-step listening plan">
+          <article class="step">
+            <div class="step-number">1</div>
+            <div class="step-body">
+              <strong>Pick one album and commit.</strong>
+              For a month or two, make this your main Wes record. Familiarity is part of the practice:
+              knowing roughly what’s coming makes details easier to hear.
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-number">2</div>
+            <div class="step-body">
+              <strong>First listen: no analysis.</strong>
+              Play the album through without stopping. No guitar, no pausing, no “what scale is this?” —
+              just let it colour the room while you sit, cook, or stare out of the window.
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-number">3</div>
+            <div class="step-body">
+              <strong>Listen only for sound.</strong>
+              On another day, focus purely on tone: the rounded thumb attack, how notes bloom and decay,
+              how his sound sits against the cymbals and bass.
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-number">4</div>
+            <div class="step-body">
+              <strong>Follow the melody.</strong>
+              Choose one tune. Hum or whistle the head, even clumsily. The aim is simply to recognise it
+              instantly when it returns — like recognising a friend’s voice in a crowd.
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-number">5</div>
+            <div class="step-body">
+              <strong>Feel the time, not the theory.</strong>
+              Tap your foot or lightly on your leg. Notice whether Wes leans on the beat, behind it,
+              or ahead of it. This “micro-timing” is half the music.
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-number">6</div>
+            <div class="step-body">
+              <strong>Hear phrases, not licks.</strong>
+              Pick one solo. Listen for where the musical sentences begin and end. Are they short questions?
+              Long paragraphs? You don’t need bar counts — just “short / medium / long” in your own words.
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-number">7</div>
+            <div class="step-body">
+              <strong>Sing one small line with him.</strong>
+              Find a tiny fragment you love and sing along with the recording. Matching the exact pitches
+              is optional; matching the <em>shape</em> and rhythm is already deep work.
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-number">8</div>
+            <div class="step-body">
+              <strong>Compare two versions of a tune.</strong>
+              If you find the same song on another album, listen to both in one sitting. Notice what stays:
+              the basic melody, the harmonic shape — and what changes: tempo, introductions, endings, solo mood.
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-number">9</div>
+            <div class="step-body">
+              <strong>Keep a tiny listening note.</strong>
+              After a focused listen, jot a single line: “Track 3 – octaves felt like waves,” or
+              “Ballad solo: so much space.” This helps your memory notice what it’s learning.
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-number">10</div>
+            <div class="step-body">
+              <strong>Return over weeks, not days.</strong>
+              Come back to the same record again and again. The goal isn’t to “finish” Wes — it’s to let his
+              sound quietly re-tune how you hear guitar, time, and melody.
+            </div>
+          </article>
+        </section>
+
+        <p class="note">
+          You can do all of this without ever picking up a guitar. If one day you feel like reaching for it,
+          fine — but even if you never do, this kind of listening is already serious musical practice.
+        </p>
+      </main>
+
+      <footer class="footer">
+        <div>Quiet listening · No login, no pressure.</div>
+        <div>Just one album, many returns.</div>
+      </footer>
     </div>
   </div>
 </body>
