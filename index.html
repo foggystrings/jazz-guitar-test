@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jazz Guitar – A Quiet Starting Point</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A minimal, anonymous page about starting to learn jazz guitar." />
+  <style>
+    :root {
+      --bg: #0f1720;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #facc15;
+      --accent-soft: rgba(250, 204, 21, 0.08);
+      --border: #1f2933;
+      --radius: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #020617 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 720px;
+      background: var(--card);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 24px 20px 18px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    h1 {
+      margin: 14px 0 6px;
+      font-size: 26px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      margin: 0 0 14px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    h2 {
+      font-size: 15px;
+      margin: 14px 0 6px;
+    }
+
+    p {
+      margin: 0 0 8px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    ul {
+      margin: 4px 0 8px;
+      padding-left: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    li + li {
+      margin-top: 4px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 6px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #020617;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .pill.primary {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .box {
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #020617;
+      padding: 10px 12px;
+      font-size: 13px;
+    }
+
+    .box h3 {
+      margin: 0 0 4px;
+      font-size: 13px;
+    }
+
+    .box p {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .tiny {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    @media (max-width: 720px) {
+      .card {
+        padding: 18px 16px 14px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <div class="tag">
+        <span class="tag-dot"></span>
+        <span>Jazz Guitar • Beginner</span>
+      </div>
+
+      <h1>Learning Jazz Guitar, Quietly</h1>
+      <p class="subtitle">
+        A small, anonymous page with a simple path: a few chords, a few shapes, a few minutes a day.
+      </p>
+
+      <div class="grid">
+        <section>
+          <h2>1. Keep it ridiculously small</h2>
+          <p>
+            Instead of trying to “learn jazz”, aim for something much smaller:
+            <strong>one tune, a few chords, and a way to play simple melodies over them.</strong>
+          </p>
+          <ul>
+            <li>Pick one song (e.g. a simple standard you like).</li>
+            <li>Learn the basic chords in the easiest positions.</li>
+            <li>Learn the melody on the top 2–3 strings.</li>
+          </ul>
+
+          <div class="pill-row">
+            <span class="pill primary">One tune</span>
+            <span class="pill">Slow practice</span>
+            <span class="pill">Short sessions</span>
+          </div>
+
+          <h2>2. A tiny daily routine</h2>
+          <p><strong>10–15 minutes is enough:</strong></p>
+          <ul>
+            <li>2 min – tune, relax shoulders, breathe.</li>
+            <li>5 min – play the chords slowly, in time.</li>
+            <li>5–8 min – play the melody, then alternate chord–melody.</li>
+          </ul>
+          <p>
+            If you feel stuck or tired, stop. Small, repeatable practice beats heroic effort.
+          </p>
+        </section>
+
+        <aside>
+          <div class="box">
+            <h3>What to focus on first</h3>
+            <p>Ignore theory at the beginning if it overwhelms you.</p>
+            <ul>
+              <li>Sound: a warm, relaxed tone.</li>
+              <li>Time: slow and steady, with a soft metronome or backing track.</li>
+              <li>Taste: leave space, don’t fill every second with notes.</li>
+            </ul>
+          </div>
+
+          <div class="box" style="margin-top: 10px;">
+            <h3>Simple “next steps” list</h3>
+            <ul>
+              <li>Learn 3 jazz chords you can switch between cleanly.</li>
+              <li>Learn 1 simple standard you like the sound of.</li>
+              <li>Record yourself once a week, just for you.</li>
+            </ul>
+            <p class="tiny">
+              No pressure, no audience, no rush.
+            </p>
+          </div>
+        </aside>
+      </div>
+
+      <p class="tiny">
+        This page is anonymous on purpose. You don’t have to be impressive to make music.
+        You just have to come back to the guitar tomorrow.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
